@@ -1,0 +1,17 @@
+public class Solution {
+/*
+* 这种问题的解决原则是：先满足需求小的孩子，再满足需求大的孩子。
+* 因此要先对孩子的需求和饼干的大小排序（不管是升序还是降序，要保证孩子需求和饼干大小的序规则相同：要么都是升序、要么都是降序），之后遍历比较是否满足条件
+*/
+    public int findContentChildren(int[] g, int[] s) {
+        Arrays.sort(g);
+        Arrays.sort(s);
+        int i = 0, j = 0;
+        for(; (i < g.length) && (j < s.length);){
+        	if(s[j] >= g[i])
+        		++i;
+        	++j;
+        }
+        return i;
+    }
+}

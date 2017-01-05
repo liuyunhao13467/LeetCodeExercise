@@ -1,0 +1,20 @@
+/*
+* 本题的思路可以逆向思考：可以将“前n-1大的数都加一从而达到所有数相同”看做“除了最小的数之外所有数减一共同达到所有数都是最小”
+* 其实具体的过程并不重要，只要看运算前的总量和运算后的总量有何区别即可
+* 按照概念来说，每进行一次计算都得排序，因此最后已经不用关注最开始的元素用不用加一了，可以将n-1个数一起加一看做单个数加一。
+* 最后其实就是算：所有数都等于最小数之后，运算前总量和运算后总量的差值
+*/
+public class Solution {
+    public int minMoves(int[] nums) {
+        int count = 0;
+        int min = nums[0];
+        int sum = nums[0];
+        for(int i = 1; i < nums.length; ++i){
+        	if(nums[i] < min)
+        		min = nums[i];
+        	sum += nums[i];
+        }
+        count = sum - min*nums.length;
+        return count;
+    }
+}
